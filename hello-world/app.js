@@ -31,3 +31,21 @@ exports.lambdaHandler = async (event, context) => {
 
     return response
 };
+
+exports.lambdaHandler2 = async (event, context) => {
+    try {
+        // const ret = await axios(url);
+        response = {
+            'statusCode': 200,
+            'body': JSON.stringify({
+                message: 'Bingo',
+                // location: ret.data.trim()
+            })
+        }
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+
+    return response
+};
