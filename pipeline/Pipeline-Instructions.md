@@ -21,22 +21,20 @@ aws ssm put-parameter \
     --name "/service/aws-sam-ocr-pipeline/github/repo" \
     --description "Github Repository name for Cloudformation Stack aws-sam-ocr-pipeline-pipeline" \
     --type "String" \
-    --value "" \
-    --overwrite
+    --value ""
 
 aws ssm put-parameter \
     --name "/service/aws-sam-ocr-pipeline/github/token" \
     --description "Github Token for Cloudformation Stack aws-sam-ocr-pipeline-pipeline" \
     --type "String" \
-    --value "" \
-    --overwrite
+    --value ""
 
 aws ssm put-parameter \
     --name "/service/aws-sam-ocr-pipeline/github/user" \
     --description "Github Username for Cloudformation Stack aws-sam-ocr-pipeline-pipeline" \
     --type "String" \
-    --value "" \
-    --overwrite
+    --value ""
+    
 ```
 
 **NOTE:** Keep in mind that these Parameters will only be available within the same region you're deploying this Pipeline stack. Also, if these values ever change you will need to [update these parameters](https://docs.aws.amazon.com/cli/latest/reference/ssm/put-parameter.html) as well as update the "aws-sam-ocr-pipeline-pipeline" Cloudformation stack.
