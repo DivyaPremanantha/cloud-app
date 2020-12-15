@@ -1,4 +1,4 @@
-# aws-sam-ocr-pipeline
+# aws-sam-pipeline
 
 **This is an example of how to create a minimal pipeline for SAM based Serverless Apps**
 
