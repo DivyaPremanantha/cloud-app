@@ -1,7 +1,8 @@
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
-let response;
-
+const databaseManager = require('./databaseManager');
+const uuidv1 = require('uuid/v1');
+console.log("event123");
 /**
  *
  * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
@@ -15,7 +16,7 @@ let response;
  * 
  */
 
-exports.BookingTrip = async (event) => {
+exports.bookingTripHandler = async (event) => {
 	console.log(event);
 
 	switch (event.httpMethod) {
@@ -36,6 +37,7 @@ function saveBooking(event) {
 	const booking = JSON.parse(event.body);
 	booking.bookingId = uuidv1();
 
+	console.log("Bingo");
 	return databaseManager.saveBooking(booking).then(response => {
 		console.log(response);
 		return sendResponse(200, booking.bookingId);

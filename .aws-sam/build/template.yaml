@@ -23,13 +23,17 @@ Resources:
   BookingTrip:
     Type: AWS::Serverless::Function
     Properties:
+      Handler: app.bookingTripHandler
+      Runtime: nodejs12.x
       CodeUri: BookingTrip
       Policies:
       - DynamoDBCrudPolicy:
           TableName:
             Ref: TableName
-      Handler: app.lambdaHandler
-      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TableName
       Events:
         CreateBooking:
           Type: Api
@@ -55,17 +59,17 @@ Resources:
       BillingMode: PAY_PER_REQUEST
 Outputs:
   BookingApi:
-    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Description: API Gateway endpoint URL for Prod stage for Booking Trip function
     Value:
       Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/booking/
   BookingTrip:
-    Description: Hello World Lambda Function ARN
+    Description: Booking Trip Lambda Function ARN
     Value:
       Fn::GetAtt:
       - BookingTrip
       - Arn
   BookingTripIamRole:
-    Description: Implicit IAM Role created for Hello World function
+    Description: Implicit IAM Role created for Booking Trip function
     Value:
       Fn::GetAtt:
       - BookingTripRole
