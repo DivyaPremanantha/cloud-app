@@ -12,7 +12,7 @@ module.exports.initializateDynamoClient = newDynamo => {
 module.exports.saveBooking = booking => {
 	const params = {
 		TableName: TABLE_NAME,
-		Booking: booking
+		Item: booking
 	};
 
 	return dynamo
