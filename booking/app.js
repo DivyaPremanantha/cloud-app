@@ -15,7 +15,7 @@ let response;
  * 
  */
 
-exports.BookingTrip = async (event) => {
+exports.bookingTripHandler = async (event) => {
 	console.log(event);
 
 	switch (event.httpMethod) {

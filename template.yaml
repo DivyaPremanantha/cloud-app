@@ -27,7 +27,7 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TableName
-      Handler: app.lambdaHandler
+      Handler: app.bookingTripHandler
       Runtime: nodejs12.x
       Events:
         CreateBooking:
