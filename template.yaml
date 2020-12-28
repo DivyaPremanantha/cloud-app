@@ -60,7 +60,7 @@ Outputs:
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   BookingApi:
-    Description: "API Gateway endpoint URL for Prod stage for Booking Trip function"
+    Description: "API Gateway endpoint URL for prod stage for Booking Trip function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/booking/"
   BookingTrip:
     Description: "Booking Trip Lambda Function ARN"
