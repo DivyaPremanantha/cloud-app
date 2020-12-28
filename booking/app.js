@@ -33,7 +33,7 @@ exports.bookingTripHandler = async (event) => {
 
 function saveBooking(event) {
 	const booking = JSON.parse(event.body);
-	booking.bookingId = Math.floor(100000 + Math.random() * 900000).toString;
+	booking.bookingId = Math.floor(100000 + Math.random() * 900000).toString();
 
 	return databaseManager.saveBooking(booking).then(response => {
 		console.log(response);
