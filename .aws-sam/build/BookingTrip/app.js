@@ -1,7 +1,6 @@
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
 const databaseManager = require('./databaseManager');
-console.log("event123");
 /**
  *
  * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
@@ -34,9 +33,8 @@ exports.bookingTripHandler = async (event) => {
 
 function saveBooking(event) {
 	const booking = JSON.parse(event.body);
-	booking.bookingId = "123";
+	booking.bookingId = Math.floor(100000 + Math.random() * 900000).toString;
 
-	console.log("Bingo112");
 	return databaseManager.saveBooking(booking).then(response => {
 		console.log(response);
 		return sendResponse(200, booking.bookingId);
