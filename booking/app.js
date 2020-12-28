@@ -36,7 +36,7 @@ function saveBooking(event) {
 	const booking = JSON.parse(event.body);
 	booking.bookingId = Math.random();
 
-	console.log("Bingo");
+	console.log("Bingo1");
 	return databaseManager.saveBooking(booking).then(response => {
 		console.log(response);
 		return sendResponse(200, booking.bookingId);
