@@ -23,7 +23,7 @@ Resources:
   BookingTrip:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: hello-world/
+      CodeUri: booking/
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TableName
