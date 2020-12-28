@@ -34,9 +34,9 @@ exports.bookingTripHandler = async (event) => {
 
 function saveBooking(event) {
 	const booking = JSON.parse(event.body);
-	booking.bookingId = Math.random();
+	booking.bookingId = "123";
 
-	console.log("Bingo");
+	console.log("Bingo112");
 	return databaseManager.saveBooking(booking).then(response => {
 		console.log(response);
 		return sendResponse(200, booking.bookingId);
