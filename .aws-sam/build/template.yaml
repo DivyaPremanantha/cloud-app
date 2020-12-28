@@ -54,10 +54,10 @@ Resources:
         KeyType: HASH
       BillingMode: PAY_PER_REQUEST
 Outputs:
-  HelloWorldApi:
+  BookingApi:
     Description: API Gateway endpoint URL for Prod stage for Hello World function
     Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/booking/
   BookingTrip:
     Description: Hello World Lambda Function ARN
     Value:
