@@ -1,7 +1,6 @@
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
 const databaseManager = require('./databaseManager');
-const uuidv1 = require('uuid/v1');
 console.log("event123");
 /**
  *
@@ -35,7 +34,7 @@ exports.bookingTripHandler = async (event) => {
 
 function saveBooking(event) {
 	const booking = JSON.parse(event.body);
-	booking.bookingId = uuidv1();
+	booking.bookingId = Math.random();
 
 	console.log("Bingo");
 	return databaseManager.saveBooking(booking).then(response => {
