@@ -1,6 +1,7 @@
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
-let response;
+const databaseManager = require('./databaseManager');
+const uuidv1 = require('uuid/v1');
 
 /**
  *
