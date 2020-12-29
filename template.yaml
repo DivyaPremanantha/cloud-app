@@ -10,14 +10,23 @@ Globals:
     Timeout: 3
 
 Parameters:
-  TableName:
+  Environment:
     Type: String
-    Default: ${opt:stage, self:provider.stage}
-    Description: (Required) The name of the new DynamoDB table you want to create and save to. Minimum 3 characters
-    MinLength: 3
-    MaxLength: 50
-    # AllowedPattern: ^[A-Za-z]+$
-    ConstraintDescription: 'Required parameter. Must be characters only. No numbers allowed.'
+    Default: dev
+    AllowedValues:
+      - dev
+      - staging
+      - prod
+    Description: Environment of this stack of resources
+
+Mappings:
+  ResourcesName:
+    dev:
+      tableName: Booking-dev
+    staging:
+      tableName: Booking-staging
+    prod:
+      tableName: Booking-prod
 
 Resources:
   BookingTrip:
@@ -28,7 +37,7 @@ Resources:
       CodeUri: booking/
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref TableName
+          TableName: !FindInMap [ResourcesName, !Ref Environment, tableName]
       Environment:
         Variables:
           TABLE_NAME: !Ref TableName

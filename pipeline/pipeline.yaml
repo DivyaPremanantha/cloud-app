@@ -145,7 +145,7 @@ Resources:
                         - Name: SourceCodeAsZip
                       OutputArtifacts:
                         - Name: BuildArtifactAsZip
-                - Name: Beta
+                - Name: dev
                   Actions:
                     - Name: CreateChangeSet
                       ActionTypeId:
@@ -161,6 +161,10 @@ Resources:
                         ChangeSetName: aws-sam-pipeline-ChangeSet-Beta
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
+                        ParameterOverrides: |
+                            {
+                              "Environment" : "dev"
+                            }
                       InputArtifacts:
                         - Name: BuildArtifactAsZip
                       RunOrder: 1
@@ -178,7 +182,7 @@ Resources:
                       OutputArtifacts:
                         - Name: aws-sam-pipelineBetaChangeSet
                       RunOrder: 2
-                - Name: Gamma
+                - Name: staging
                   Actions:
                     - Name: CreateChangeSet
                       ActionTypeId:
@@ -193,6 +197,10 @@ Resources:
                         ChangeSetName: aws-sam-pipeline-ChangeSet-Gamma
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
+                        ParameterOverrides: |
+                            {
+                              "Environment" : "staging"
+                            }
                       InputArtifacts:
                         - Name: BuildArtifactAsZip
                       RunOrder: 1
@@ -232,6 +240,10 @@ Resources:
                         ChangeSetName: aws-sam-pipeline-ChangeSet-prod
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
+                        ParameterOverrides: |
+                            {
+                              "Environment" : "prod"
+                            }
                       InputArtifacts:
                         - Name: BuildArtifactAsZip
                       RunOrder: 2
