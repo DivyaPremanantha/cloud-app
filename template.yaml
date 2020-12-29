@@ -37,7 +37,7 @@ Resources:
       CodeUri: booking/
       Policies:
         - DynamoDBCrudPolicy:
-          TableName: !Ref BookingTripTable
+            TableName: !Ref BookingTripTable
       Environment:
         Variables:
           TABLE_NAME: !Ref BookingTripTable
