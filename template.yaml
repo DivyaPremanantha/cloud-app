@@ -42,7 +42,7 @@ Resources:
         Variables:
           TABLE_NAME: !FindInMap [ResourcesName, !Ref Environment, tableName]
       Events:
-        CreateBooking:
+        CreateBookingAPI:
           Type: Api
           Properties:
             StageName: !Ref Environment
