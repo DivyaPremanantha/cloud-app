@@ -51,7 +51,6 @@ Resources:
         UpdateBookingAPI:
           Type: Api
           Properties:
-            StageName: !Ref Environment
             Path: /booking/{bookingId}
             Method: ANY
 
