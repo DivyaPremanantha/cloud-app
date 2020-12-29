@@ -22,11 +22,11 @@ Parameters:
 Mappings:
   ResourcesName:
     dev:
-      tableName: Booking-dev
+      tableName: BookingTrip-dev
     staging:
-      tableName: Booking-staging
+      tableName: BookingTrip-staging
     prod:
-      tableName: Booking-prod
+      tableName: BookingTrip-prod
 
 Resources:
   BookingTrip:
@@ -37,10 +37,10 @@ Resources:
       CodeUri: booking/
       Policies:
         - DynamoDBCrudPolicy:
-          TableName: !FindInMap [ResourcesName, !Ref Environment, tableName]
+          TableName: !Ref BookingTripTable
       Environment:
         Variables:
-          TABLE_NAME: !Ref TableName
+          TABLE_NAME: !Ref BookingTripTable
       Events:
         CreateBooking:
           Type: Api
@@ -55,7 +55,7 @@ Resources:
   BookingTripTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: !Ref TableName
+      TableName: !FindInMap [ResourcesName, !Ref Environment, tableName]
       AttributeDefinitions:
         - AttributeName: bookingId
           AttributeType: S
