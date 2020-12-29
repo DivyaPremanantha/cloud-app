@@ -29,7 +29,7 @@ Mappings:
       tableName: BookingTrip-prod
 
 Resources:
-  BookingTripFunction:
+  BookingTrip:
     Type: AWS::Serverless::Function
     Properties:
       Handler: app.bookingTripHandler
