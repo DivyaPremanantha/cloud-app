@@ -29,7 +29,7 @@ Mappings:
       tableName: BookingTrip-prod
 
 Resources:
-  BookingTrip:
+  BookingTripFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: app.bookingTripHandler
@@ -42,12 +42,12 @@ Resources:
         Variables:
           TABLE_NAME: !Ref BookingTripTable
       Events:
-        CreateBooking:
+        CreateBookingAPI:
           Type: Api
           Properties:
             Path: /booking
             Method: POST
-        UpdateBooking:
+        UpdateBookingAPI:
           Type: Api
           Properties:
             Path: /booking/{bookingId}
