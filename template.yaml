@@ -45,14 +45,15 @@ Resources:
         CreateBookingAPI:
           Type: Api
           Properties:
-            StageName: !Ref Environment
             Path: /booking
             Method: POST
+            StageName: !Ref Environment
         UpdateBookingAPI:
           Type: Api
           Properties:
             Path: /booking/{bookingId}
             Method: ANY
+            StageName: !Ref Environment
 
   BookingTripTable:
     Type: AWS::DynamoDB::Table
