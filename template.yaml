@@ -22,7 +22,7 @@ Parameters:
   UserPoolARNDev:
     Description: My SSM Value
     Type: AWS::SSM::Parameter::Value<String>
-    Default: UserPoolARN
+    Default: UserPoolARNDev
   
   UserPoolARNStaging:
     Description: My SSM Value
