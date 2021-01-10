@@ -22,13 +22,13 @@ Parameters:
 Mappings:
   ResourcesName:
     dev:
-      tableName: BookingTrip-dev
+      tableName: BookingTripDev
       arn: UserPoolArnDev
     staging:
-      tableName: BookingTrip-staging
+      tableName: BookingTripStaging
       arn: UserPoolArnStaging
     prod:
-      tableName: BookingTrip-prod
+      tableName: BookingTripProd
       arn: UserPoolArnProd
 
 Resources:
@@ -95,6 +95,11 @@ Outputs:
   BookingTrip:
     Description: "Booking Trip Lambda Function ARN"
     Value: !GetAtt BookingTrip.Arn
+  BookingTripTable:
+    Description: "Booking Trip Dynamo DB Table"
+    Value: !GetAtt BookingTripTable.Arn
+    Export: 
+      Name: !FindInMap [ResourcesName, !Ref Environment, tableName]
   BookingTripIamRole:
     Description: "Implicit IAM Role created for Booking Trip function"
     Value: !GetAtt BookingTripRole.Arn
