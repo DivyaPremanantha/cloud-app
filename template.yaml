@@ -32,9 +32,9 @@ Mappings:
       arn: UserPoolArnProd
   
 Conditions:
-  UserPoolArnDev: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnDev']
-  UserPoolArnStaging: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnStaging']
-  UserPoolArnProd: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnProd']
+  UserPoolArnDev: !Equals [!Ref Environment, 'dev']
+  UserPoolArnStaging: !Equals [!Ref Environment, 'staging']
+  UserPoolArnProd: !Equals [!Ref Environment, 'prod']
 
 
 Resources:
