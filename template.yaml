@@ -42,7 +42,7 @@ Resources:
         DefaultAuthorizer: MyCognitoAuthorizer
         Authorizers:
           MyCognitoAuthorizer:
-            UserPoolArn: !FindInMap [ResourcesName, !Ref Environment, arn]
+            UserPoolArn: !ImportValue !FindInMap [ResourcesName, !Ref Environment, arn]
 
   BookingTrip:
     Type: AWS::Serverless::Function
