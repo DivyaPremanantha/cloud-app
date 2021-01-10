@@ -31,7 +31,7 @@ exports.bookingTripHandler = async (event, context) => {
 	}
 };
 
-function saveBooking(event) {
+function saveBooking(event, context) {
 	const booking = JSON.parse(event.body);
 	booking.bookingId = context.awsRequestId;
 	booking.customerId = event.requestContext.authorizer.claims.sub;
