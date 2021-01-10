@@ -157,8 +157,7 @@ Resources:
                       # More info on Possible Values for Cloudformation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-action-reference.html#w2ab2c13c13b9
                         ParameterOverrides: |
                             {
-                              "Environment" : "dev",
-                              "UserPoolARN": !ImportValue UserPoolArnDev
+                              "Environment" : "dev"
                             }
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
@@ -200,8 +199,7 @@ Resources:
                         Capabilities: CAPABILITY_IAM
                         ParameterOverrides: |
                             {
-                              "Environment" : "staging",
-                              "UserPool": !ImportValue UserPoolArnStaging
+                              "Environment" : "staging"
                             }
                       InputArtifacts:
                         - Name: BuildArtifactAsZip

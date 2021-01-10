@@ -18,9 +18,11 @@ Parameters:
       - staging
       - prod
     Description: Environment of this stack of resources
+
   UserPoolARN:
-    Type: String
-    Description: User pool ARN resource
+    Description: My SSM Value
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: UserPoolARN
 
 Mappings:
   ResourcesName:
@@ -42,7 +44,7 @@ Resources:
         DefaultAuthorizer: MyCognitoAuthorizer
         Authorizers:
           MyCognitoAuthorizer:
-            UserPoolArn: !Ref UserPool
+            UserPoolArn: !Ref UserPoolARN
 
   BookingTrip:
     Type: AWS::Serverless::Function
