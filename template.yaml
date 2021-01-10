@@ -20,7 +20,12 @@ Parameters:
     Description: Environment of this stack of resources
   ARN:
     Type: String
-    Default: !ImportValue UserPoolArnDev
+    Default: UserPoolArnDev
+    AllowedValues:
+      - UserPoolArnDev
+      - UserPoolArnStaging
+      - UserPoolArnProd
+    Description: User pool ARN resource
 
 Mappings:
   ResourcesName:
