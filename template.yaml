@@ -23,12 +23,15 @@ Mappings:
   ResourcesName:
     dev:
       tableName: BookingTripDev
+      tableNameArn: BookingTripDevArn
       arn: UserPoolArnDev
     staging:
       tableName: BookingTripStaging
+      tableNameArn: BookingTripStagingArn
       arn: UserPoolArnStaging
     prod:
       tableName: BookingTripProd
+      tableNameArn: BookingTripProdArn
       arn: UserPoolArnProd
 
 Resources:
@@ -95,11 +98,16 @@ Outputs:
   BookingTrip:
     Description: "Booking Trip Lambda Function ARN"
     Value: !GetAtt BookingTrip.Arn
-  BookingTripTableStream:
+  BookingTripTable:
     Description: "Booking Trip Dynamo DB Table"
-    Value: !GetAtt BookingTripTable.StreamArn
+    Value: !FindInMap [ResourcesName, !Ref Environment, tableName]
     Export: 
       Name: !FindInMap [ResourcesName, !Ref Environment, tableName]
+  BookingTripTableStream:
+    Description: "Booking Trip Dynamo DB Table Stream"
+    Value: !GetAtt BookingTripTable.StreamArn
+    Export: 
+      Name: !FindInMap [ResourcesName, !Ref Environment, tableNameArn]
   BookingTripIamRole:
     Description: "Implicit IAM Role created for Booking Trip function"
     Value: !GetAtt BookingTripRole.Arn
