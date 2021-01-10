@@ -18,19 +18,18 @@ Parameters:
       - staging
       - prod
     Description: Environment of this stack of resources
+  ARN:
+    Type: String
+    Default: !ImportValue UserPoolArnDev
 
 Mappings:
   ResourcesName:
     dev:
       tableName: BookingTrip-dev
-      arn: !ImportValue UserPoolArnDev
     staging:
       tableName: BookingTrip-staging
-      arn: !ImportValue UserPoolArnStaging
     prod:
       tableName: BookingTrip-prod
-      arn: !ImportValue UserPoolArnProd
-
 
 Resources:
   BookingApi:
@@ -43,8 +42,7 @@ Resources:
         DefaultAuthorizer: MyCognitoAuthorizer
         Authorizers:
           MyCognitoAuthorizer:
-            Condition: UserPoolArnDev
-            UserPoolArn: !FindInMap [ResourcesName, !Ref Environment, arn]
+            UserPoolArn: !Ref ARN
 
   BookingTrip:
     Type: AWS::Serverless::Function
