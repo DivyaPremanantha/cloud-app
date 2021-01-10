@@ -158,7 +158,7 @@ Resources:
                         ParameterOverrides: |
                             {
                               "Environment" : "dev",
-                              "UserPool": !ImportValue UserPoolArnDev
+                              "UserPoolARN": !ImportValue UserPoolArnDev
                             }
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
