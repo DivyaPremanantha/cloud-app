@@ -1,9 +1,8 @@
 'use strict';
 
+const TABLE_NAME = process.env.TABLE_NAME;
 const AWS = require('aws-sdk');
 let dynamo = new AWS.DynamoDB.DocumentClient();
-
-const TABLE_NAME = process.env.TABLE_NAME;
 
 module.exports.initializateDynamoClient = newDynamo => {
 	dynamo = newDynamo;
