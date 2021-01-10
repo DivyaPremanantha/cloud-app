@@ -23,10 +23,13 @@ Mappings:
   ResourcesName:
     dev:
       tableName: BookingTrip-dev
+      arn: UserPoolArnDev
     staging:
       tableName: BookingTrip-staging
+      arn: UserPoolArnStaging
     prod:
       tableName: BookingTrip-prod
+      arn: UserPoolArnProd
 
 Resources:
   BookingApi:
@@ -39,7 +42,7 @@ Resources:
         DefaultAuthorizer: MyCognitoAuthorizer
         Authorizers:
           MyCognitoAuthorizer:
-            UserPoolArn: !ImportValue UserPoolArn
+            UserPoolArn: !FindInMap [ResourcesName, !Ref Environment, arn]
 
   BookingTrip:
     Type: AWS::Serverless::Function

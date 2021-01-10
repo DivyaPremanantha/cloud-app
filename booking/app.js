@@ -35,11 +35,6 @@ function saveBooking(event) {
 	const booking = JSON.parse(event.body);
 	booking.bookingId = context.awsRequestId;
 	booking.customerId = event.requestContext.authorizer.claims.sub;
-	booking.customerName = event.customer;
-	booking.desitnation = event.desitnation;
-	booking.tripStartTime = event.tripStartTime;
-	booking.tripEndTime = event.tripEndTime;
-	booking.fare = event.fare;
 	booking.paymentStatus = "Pending";
 
 	return databaseManager.saveBooking(booking).then(response => {
