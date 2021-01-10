@@ -23,7 +23,7 @@ exports.bookingTripHandler = async (event, context) => {
 		case 'GET':
 			return getBooking(event);
 		case 'POST':
-			return saveBooking(event);
+			return saveBooking(event, context);
 		case 'PUT':
 			return updateBooking(event);
 		default:
