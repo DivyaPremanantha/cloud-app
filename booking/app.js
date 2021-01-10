@@ -14,7 +14,7 @@ const databaseManager = require('./databaseManager');
  * 
  */
 
-exports.bookingTripHandler = async (event) => {
+exports.bookingTripHandler = async (event, context) => {
 	console.log(event);
 
 	switch (event.httpMethod) {
@@ -33,7 +33,14 @@ exports.bookingTripHandler = async (event) => {
 
 function saveBooking(event) {
 	const booking = JSON.parse(event.body);
-	booking.bookingId = Math.floor(100000 + Math.random() * 900000).toString();
+	booking.bookingId = context.awsRequestId;
+	booking.customerId = event.requestContext.authorizer.claims.sub;
+	booking.customerName = event.customer;
+	booking.desitnation = event.desitnation;
+	booking.tripStartTime = event.tripStartTime;
+	booking.tripEndTime = event.tripEndTime;
+	booking.fare = event.fare;
+	booking.paymentStatus = "Pending";
 
 	return databaseManager.saveBooking(booking).then(response => {
 		console.log(response);
