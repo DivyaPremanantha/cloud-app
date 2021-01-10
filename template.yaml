@@ -31,10 +31,10 @@ Mappings:
       tableName: BookingTrip-prod
       arn: UserPoolArnProd
   
-  Conditions:
-    UserPoolArnDev: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnDev']
-    UserPoolArnStaging: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnStaging']
-    UserPoolArnProd: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnProd']
+Conditions:
+  UserPoolArnDev: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnDev']
+  UserPoolArnStaging: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnStaging']
+  UserPoolArnProd: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnProd']
 
 
 Resources:
