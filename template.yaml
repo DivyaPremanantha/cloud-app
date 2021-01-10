@@ -34,6 +34,12 @@ Resources:
     Properties:
       StageName: !Ref Environment
       TracingEnabled: true
+      Cors: "'*'"
+      Auth:
+        DefaultAuthorizer: MyCognitoAuthorizer
+        Authorizers:
+          MyCognitoAuthorizer:
+            UserPoolArn: !ImportValue UserPoolArn
 
   BookingTrip:
     Type: AWS::Serverless::Function
