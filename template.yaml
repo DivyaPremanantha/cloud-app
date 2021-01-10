@@ -19,21 +19,6 @@ Parameters:
       - prod
     Description: Environment of this stack of resources
 
-  UserPoolARNDev:
-    Description: My SSM Value
-    Type: AWS::SSM::Parameter::Value<String>
-    Default: UserPoolARNDev
-  
-  UserPoolARNStaging:
-    Description: My SSM Value
-    Type: AWS::SSM::Parameter::Value<String>
-    Default: UserPoolARNStaging
-  
-  UserPoolARNProd:
-    Description: My SSM Value
-    Type: AWS::SSM::Parameter::Value<String>
-    Default: UserPoolARNProd
-
 Mappings:
   ResourcesName:
     dev:
