@@ -95,9 +95,9 @@ Outputs:
   BookingTrip:
     Description: "Booking Trip Lambda Function ARN"
     Value: !GetAtt BookingTrip.Arn
-  BookingTripTable:
+  BookingTripTableStream:
     Description: "Booking Trip Dynamo DB Table"
-    Value: !GetAtt BookingTripTable.Arn
+    Value: !GetAtt BookingTripTable.StreamArn
     Export: 
       Name: !FindInMap [ResourcesName, !Ref Environment, tableName]
   BookingTripIamRole:
