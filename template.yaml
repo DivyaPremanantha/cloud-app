@@ -30,6 +30,12 @@ Mappings:
     prod:
       tableName: BookingTrip-prod
       arn: UserPoolArnProd
+  
+  Conditions:
+    UserPoolArnDev: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnDev']
+    UserPoolArnStaging: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnStaging']
+    UserPoolArnProd: !Equals [ !FindInMap [ResourcesName, !Ref Environment, arn], 'UserPoolArnProd']
+
 
 Resources:
   BookingApi:
@@ -42,7 +48,12 @@ Resources:
         DefaultAuthorizer: MyCognitoAuthorizer
         Authorizers:
           MyCognitoAuthorizer:
-            UserPoolArn: !ImportValue !FindInMap [ResourcesName, !Ref Environment, arn]
+            Condition: UserPoolArnDev
+            UserPoolArn: !ImportValue UserPoolArnDev
+            Condition: UserPoolArnDev
+            UserPoolArn: !ImportValue UserPoolArnStaging
+            Condition: UserPoolArnDev
+            UserPoolArn: !ImportValue UserPoolArnProd
 
   BookingTrip:
     Type: AWS::Serverless::Function
