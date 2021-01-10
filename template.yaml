@@ -19,19 +19,32 @@ Parameters:
       - prod
     Description: Environment of this stack of resources
 
-  UserPoolARN:
+  UserPoolARNDev:
     Description: My SSM Value
     Type: AWS::SSM::Parameter::Value<String>
     Default: UserPoolARN
+  
+  UserPoolARNStaging:
+    Description: My SSM Value
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: UserPoolARNStaging
+  
+  UserPoolARNProd:
+    Description: My SSM Value
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: UserPoolARNProd
 
 Mappings:
   ResourcesName:
     dev:
       tableName: BookingTrip-dev
+      arn: !Ref UserPoolARNDev
     staging:
       tableName: BookingTrip-staging
+      arn: !Ref UserPoolARNStaging
     prod:
       tableName: BookingTrip-prod
+      arn: !Ref UserPoolARNProd
 
 Resources:
   BookingApi:
@@ -44,7 +57,7 @@ Resources:
         DefaultAuthorizer: MyCognitoAuthorizer
         Authorizers:
           MyCognitoAuthorizer:
-            UserPoolArn: !Ref UserPoolARN
+            UserPoolArn: !FindInMap [ResourcesName, !Ref Environment, arn]
 
   BookingTrip:
     Type: AWS::Serverless::Function
