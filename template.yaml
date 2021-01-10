@@ -50,9 +50,9 @@ Resources:
           MyCognitoAuthorizer:
             Condition: UserPoolArnDev
             UserPoolArn: !ImportValue UserPoolArnDev
-            Condition: UserPoolArnDev
+            Condition: UserPoolArnStaging
             UserPoolArn: !ImportValue UserPoolArnStaging
-            Condition: UserPoolArnDev
+            Condition: UserPoolArnProd
             UserPoolArn: !ImportValue UserPoolArnProd
 
   BookingTrip:
