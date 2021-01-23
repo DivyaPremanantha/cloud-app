@@ -34,7 +34,7 @@ module.exports.getBooking = bookingId => {
 		.get(params)
 		.promise()
 		.then(result => {
-			return result.Booking;
+			return result.Item;
 		});
 };
 
